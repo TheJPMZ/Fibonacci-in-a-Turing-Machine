@@ -1,3 +1,15 @@
+import itertools
+
+filee = 'data.txt'
+
+def readData(file_name):
+    # Abrir el archivo y leer las líneas
+    with open(file_name, 'r') as archivo:
+        for line in archivo:
+            line = line.strip()
+    # Devolver la lista de líneas 
+    return line
+
 R = 1
 L = -1
 
@@ -34,10 +46,14 @@ end = {
 }
 
 turing_table = {**initial, **pos, **num, **next, **end}
+# print(turing_table)
 
+listData = readData(filee)
+# print(listData)
 
 # Esto de aqui es el string inicial VVV
-tape = ["X"] + ["1","1","1","1","1","1","1","1","1","1"] + ["X"]*165
+# .chain concateno elementos de lista de listas en una plana
+tape = ["X"] + list(itertools.chain(*listData)) + ["X"] * 165
 
 initial_pos = 1
 
@@ -58,6 +74,16 @@ class Turing:
         self.state = new[0]
         self.tape[self.pos] = new[1]
         self.pos += new[2]        
+
+        # Se imprime el movimiento de la máquina
+        # Dependiendo el número de espacios en la máquina se cambian por _
+        tape_str = ''.join(self.tape).replace("X", "_")
+        # Muestra en dónde se encuentra la cabeza
+        head_str = ''.join([' ']*(self.pos - 1)) + '^'
+        print(tape_str)
+        print(head_str)
+        print(f"State: {self.state}")
+        print()
         
     def run(self) -> str:
         while self.state != "18":
@@ -65,5 +91,5 @@ class Turing:
         return "".join(self.tape).replace("X", "") + " = " + str(self.tape.count("1"))
     
     
-   
-Turing(tape, turing_table).run()
+output = Turing(tape, turing_table).run()
+print(output)
