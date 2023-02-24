@@ -1,4 +1,5 @@
 import itertools
+import time
 
 filee = 'data.txt'
 
@@ -53,7 +54,7 @@ listData = readData(filee)
 
 # Esto de aqui es el string inicial VVV
 # .chain concateno elementos de lista de listas en una plana
-tape = ["X"] + list(itertools.chain(*listData)) + ["X"] * 165
+tape = ["X"] + list(itertools.chain(*listData)) + ["X"] * 165*3
 
 initial_pos = 1
 
@@ -86,8 +87,11 @@ class Turing:
         print()
         
     def run(self) -> str:
+        # Takin execution time
+        start_time = time.time()
         while self.state != "18":
             self.move()
+        print("Tiempo: %s segundos" % (time.time() - start_time))
         return "".join(self.tape).replace("X", "") + " = " + str(self.tape.count("1"))
     
     
