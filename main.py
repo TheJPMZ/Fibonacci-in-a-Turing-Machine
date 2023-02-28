@@ -50,17 +50,16 @@ turing_table = {**initial, **pos, **num, **next, **end}
 # print(turing_table)
 
 listData = readData(filee)
-# print(listData)
 
 # Esto de aqui es el string inicial VVV
 # .chain concateno elementos de lista de listas en una plana
-tape = ["X"] + list(itertools.chain(*listData)) + ["X"] * 165*3
 
 initial_pos = 1
 
 class Turing:
     def __init__(self, tape, turing_table, initial_pos = 1) -> None:
         self.tape = tape
+        print(self.tape)
         self.pos = initial_pos
         self.turing_table = turing_table
         self.value = self.tape[self.pos]
@@ -95,5 +94,25 @@ class Turing:
         return "".join(self.tape).replace("X", "") + " = " + str(self.tape.count("1"))
     
     
-output = Turing(tape, turing_table).run()
-print(output)
+''' output = Turing(tape, turing_table).run()
+print(output) '''
+
+
+def multiple(file_name):
+    line_list = []
+    output_list = []
+    with open(file_name, 'r') as archivo:
+        for line in archivo:
+            line_list.append(line.strip())
+            
+    for i in line_list:
+        taper = ["X"] + list(itertools.chain(*i)) + ["X"] * 165*3
+        output_list.append(Turing(taper, turing_table).run()+'\n')
+        
+    with open('output.txt', 'a') as file:
+        file.truncate(0)
+        file.writelines(output_list)
+        file.close()
+    # Devolver la lista de líneas 
+    
+multiple('data.txt')
