@@ -33,9 +33,10 @@ class Turing:
         # Dependiendo el número de espacios en la máquina se cambian por _
         tape_str = ''.join(self.tape).replace("X", "□")
         # Muestra en dónde se encuentra la cabeza
-        head_str = ''.join([' ']*(self.pos)) + '^'
-        print(tape_str)
+        head_str = ''.join([' ']*(self.pos+1)) + '\u2193'
+        prueba = tape_str[:self.pos]+"["+tape_str[self.pos]+"]" + tape_str[self.pos +1:]
         print(head_str)
+        print(prueba)
         print(f"State: {self.state}")
         print()
         
@@ -61,7 +62,7 @@ def multiple(file_name, config_file):
             line_list.append(line.strip())
             
     for i in line_list:
-        taper = ["X"] + list(itertools.chain(*i)) + ["X"] *50*((len(line_list))*2)
+        taper = ["X"] + list(itertools.chain(*i)) + ["X"] *50*((len(line_list))*2-2)
         output_list.append(Turing(taper, turing_table).run()+'\n')
         
     with open('output.txt', 'a') as file:
