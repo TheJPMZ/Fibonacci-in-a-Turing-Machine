@@ -6,6 +6,7 @@ Para este proyecto se tuvo que diseñar una implementación de una maquina de tu
 * La maquina de turing admite una cadena de entrada compuesta de 1's. El numero de 1's en la cadena es el numero de la sucesión de fibonacci que se desea encontrar. Ejemplo: 1111 es el numero 4 de la sucesión de fibonacci.
 * La maquina de turing regresa igualmente una cadena de 1's, o el numero 0 si la cadena de entrada es vacia.
 * Al momento de simular la maquina de turing, el caracter "□" representa el espacio en blanco. Y el puntero de la maquina de turing se representa por el caracter rodeado de corchetes "[ ]".
+* Para declarar la maquina de turing el simbolo 
 
 ## Ejecución
 Para ejecutar el programa se debe de ejecutar el archivo "main.py" con python 3.6 o superior. 
