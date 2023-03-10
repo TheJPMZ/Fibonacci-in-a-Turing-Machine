@@ -1,40 +1,35 @@
-# Proyecto Algoritmos
-Para este proyecto se tuvo que diseñar una implementación de una maquina de turing que con un archivo de configuración pueda leer una cadena y encontrar el numero correspondiente al fibonacci de la cadena.
+# Fibonacci in a Turing Machine
+This is a project that consists of simulating a Turing Machine that calculates the Fibonacci sequence. This project was made for the Algorithms and Complexity class at "University of the Valley" in Guatemala.
 
-## Convenciones
-* La sucesión de fibonacci empieza en 0.
-* La maquina de turing admite una cadena de entrada compuesta de 1's. El numero de 1's en la cadena es el numero de la sucesión de fibonacci que se desea encontrar. Ejemplo: 1111 es el numero 4 de la sucesión de fibonacci.
-* La maquina de turing regresa igualmente una cadena de 1's, o el numero 0 si la cadena de entrada es vacia.
-* Al momento de simular la maquina de turing, el caracter "□" representa el espacio en blanco. Y el puntero de la maquina de turing se representa por el caracter rodeado de corchetes "[ ]".
-* Para declarar la maquina de turing el simbolo 
+## Conventions
+* Fibonacci sequence starts at 0.
+* Unary representation of numbers. (0 = 0, 1 = 1, 11 = 2, 111 = 3, 1111 = 4, etc.)
+* When simulating the Turing Machine, the blank symbol is represented by the character "□".
+* Machine's pointer is represented by the character surrounded by brackets "[ ]".
 
-## Ejecución
-Para ejecutar el programa se debe de ejecutar el archivo "main.py" con python 3.6 o superior. 
-Se requiere un archivo json de configuración para la maquina de turing, el cual debe de tener la siguiente estructura:
+## Turing Machine
+To simulate the Turing Machine, the file "main.py" must be executed with python 3.6 or higher.
+A json file is required for the Turing Machine configuration, which must have the following structure:
 ```json
 {
-    "Q": "States",
-    "Σ": "Alphabet",
-    "Γ": "Estados de la maquina de turing",
-    "S": "Initial state",
-    "b": "Blank symbol",
-    "F": "Final states",
     "transitions":{
         "State": {"Symbol": ["Next state", "Symbol to write", "Direction"]},
     }
 }
 ```
-Asimismo se debe de tener un archivo de texto con las cadenas de entrada que se desean simular. Cada cadena debe de estar en una linea diferente. Ejemplo:
-```txt
-1
-111
-1111111
-```
-Para ejecutar el programa se debe de ejecutar el siguiente comando:
+
+To execute the program, the following command must be executed:
 ```bash
 python main.py
 ```
-EL programa mostrará la simulación de la maquina de turing para cada cadena de entrada. Al finalizar el programa se generará un archivo de texto con el nombre "output.txt" en el cual se mostrará el resultado de cada cadena de entrada. 
 
-## Grafo de la maquina de turing
+With the given input, the program will simulate the Turing Machine.
+
+## Graph representation of the Turing Machine
 ![imagen](https://user-images.githubusercontent.com/64183934/222681481-9f0250d6-cfd9-449b-99fd-007849d6c9ae.png)
+
+- Blue nodes are initial checks and preparation for the Turing Machine.
+- Purple nodes are counting nodes.
+- Red nodes are transition nodes.
+- Orange nodes calculate the Fibonacci sequence.
+- Magenta nodes remove everything but the result.
