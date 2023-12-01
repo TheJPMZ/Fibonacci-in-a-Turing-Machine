@@ -1,4 +1,4 @@
-# Proyecto Algoritmos
+# Fibonacci in a Turing Machine
 Para este proyecto se tuvo que diseñar una implementación de una maquina de turing que con un archivo de configuración pueda leer una cadena y encontrar el numero correspondiente al fibonacci de la cadena.
 
 ## Convenciones
